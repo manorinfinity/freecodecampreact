@@ -1,4 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import marked from "marked";
+import DOMPurify from "dompurify";
 import Preview from "./Preview";
 const Editor = (props) => {
   const [state, setState] = useState({
@@ -9,25 +11,15 @@ const Editor = (props) => {
   const handleChange = (e) => {
     e.preventDefault();
     setState({ [e.target.name]: e.target.value });
-    // The text area renders its value only text. So, We will need to loop through the whole string of inputText and replace elements with p tags and other stuff.
   };
   const handleOutput = () => {
-    let lineArray = state.inputText.split("\n");
-    let spaceArray = lineArray.map((elem) => elem.split(" "));
-    let final = spaceArray.map((line) => {
-      if (line[0] === "###") {
-        line[0] = "<h3>";
-        line.push("</h3>");
-      } else if (line[0] === "##") {
-        line[0] = "<h2>";
-        line.push("</h2>");
-      } else if (line[0] === "#") {
-        line[0] = "<h1>";
-        line.push("</h1>");
-      }
-      return line.join(" ");
-    });
-    return final.join("\n");
+    let output;
+    marked.setOptions({
+      breaks: true,
+    }); //This replace all \n with br
+    output = DOMPurify.sanitize(marked(state.inputText || ""));
+    // setState({ outputText: output });
+    return output;
   };
   return (
     <div>
