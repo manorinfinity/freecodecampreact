@@ -2,3 +2,25 @@ html,
 body {
   white-space: pre-wrap;
 }
+#preview {
+  background: bisque;
+  padding: 5% 20%;
+}
+h2 {
+  text-align: center;
+}
+blockquote > p {
+  display: inline;
+  border-left: 4px solid red;
+  padding-left: 10px;
+}
+th,
+td {
+  border: 2px solid black;
+  padding: 5px;
+}
+ul,
+ol {
+  /* display: inline-block !important; */
+  /* padding: 0px !important; */
+}

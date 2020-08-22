@@ -1,0 +1,17 @@
+#editor {
+  margin-left: 5%;
+  width: 90vw;
+  height: 40vh;
+  border: none;
+  outline: none;
+  background: rgb(78, 61, 41);
+  color: white;
+  font-size: 22px;
+  margin-bottom: 3%;
+}
+#preview > pre,
+#preview > p > code {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+}

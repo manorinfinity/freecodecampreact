@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import marked from "marked";
 import DOMPurify from "dompurify";
+import "./Editor.css";
 import Preview from "./Preview";
 const Editor = (props) => {
   const [state, setState] = useState({
-    inputText: "", //This will be the text that user enters
-    outputText: "", //This will be the innerHTML text that we shall display on Preview
+    inputText: "# Preview", //This will be the text that user enter
   });
   // We differentiate between words and lines using space and enter
   const handleChange = (e) => {
@@ -23,6 +23,7 @@ const Editor = (props) => {
   };
   return (
     <div>
+      <h2 style={{ color: "white" }}>Editor</h2>
       <textarea id="editor" name="inputText" onChange={handleChange}></textarea>
       <Preview input={handleOutput} />
       {/* We should pass outputText as a prop to Preview component */}
